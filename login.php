@@ -39,6 +39,9 @@ $form = [
             'class' => ''
         ]
     ],
+    'validators' => [
+        'validate_login'
+    ],
     'callbacks' => [
         'fail' => 'form_fail',
         'success' => 'form_success'

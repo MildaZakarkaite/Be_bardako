@@ -4,7 +4,7 @@
 
 function validate_not_empty($field_input, &$field) {
     if ($field_input === '') {
-        $field['error'] = 'Laukas negali b?ti tu�?ias!';
+        $field['error'] = 'Laukas negali b?ti tu�?ias!';
     } else {
         return true;
     }
@@ -12,7 +12,7 @@ function validate_not_empty($field_input, &$field) {
 
 function validate_is_number($field_input, &$field) {
     if (!is_numeric($field_input)) {
-        $field['error'] = 'Turi būti įrašytas skai�?ius!';
+        $field['error'] = 'Turi būti įrašytas skai�?ius!';
     } else {
         return true;
     }
@@ -20,7 +20,7 @@ function validate_is_number($field_input, &$field) {
 
 function validate_is_positive($field_input, &$field) {
     if ($field_input <= 0) {
-        $field['error'] = 'Privalo būti teigiamas skai�?ius!';
+        $field['error'] = 'Privalo būti teigiamas skai�?ius!';
     } else {
         return true;
     }
@@ -28,7 +28,7 @@ function validate_is_positive($field_input, &$field) {
 
 function validate_max_120($field_input, &$field) {
     if ($field_input > 120) {
-        $field['error'] = 'Skai�?ius turi būti mažesnis, negu 120!';
+        $field['error'] = 'Skai�?ius turi būti mažesnis, negu 120!';
     } else {
         return true;
     }
@@ -114,3 +114,18 @@ function validate_team($field_input, &$field) {
     }
     return true;
 }
+
+function validate_login($field_input, &$field) {
+    $users = file_to_array('data/users.txt');
+
+    if (!empty($users)) {
+        foreach ($users as $user) {
+            if (($user['email']) == ($field_input)) {
+                $field['error'] = 'Toks email adresas jau yra';
+                return false;
+            }
+        }
+    }
+    return true;
+}
+
