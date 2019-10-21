@@ -30,7 +30,7 @@ $form = [
                 'validate_not_empty',
                 'validate_email',
                 'validate_email_unique'
-            ],
+            ], 
         ],
         'password' => [
             'type' => 'password',
